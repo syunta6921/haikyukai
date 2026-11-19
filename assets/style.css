@@ -58,8 +58,8 @@ a { color: inherit; }
 .hk-journey__stage { position: sticky; top: 0; height: 100vh; height: 100dvh; overflow: hidden; perspective: 1200px; }
 .hk-journey__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(calc(1 + var(--p, 0) * .03)) rotateX(calc(var(--p, 0) * 2deg)); transform-origin: 50% 60%; }
 .hk-journey__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,15,46,.85) 0%, rgba(11,15,46,.25) 55%, rgba(11,15,46,.55) 100%), linear-gradient(0deg, rgba(11,15,46,.9), transparent 35%); }
-.hk-chapter { position: absolute; left: 0; right: 0; bottom: 14vh; width: min(1160px, 100% - 40px); margin-inline: auto; opacity: 0; pointer-events: none; transform: translateY(40px) rotateX(-12deg); transform-origin: 0 100%; visibility: hidden; transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1), visibility 0s .7s; }
-.hk-chapter.is-active { opacity: 1; pointer-events: auto; transform: none; visibility: visible; transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1), visibility 0s; }
+.hk-chapter { position: absolute; left: 0; right: 0; bottom: 14vh; width: min(1160px, 100% - 40px); margin-inline: auto; opacity: 0; pointer-events: none; visibility: hidden; }
+.hk-chapter.is-active { opacity: 1; pointer-events: auto; visibility: visible; }
 .hk-chapter[data-align="right"] { text-align: right; }
 .hk-chapter[data-align="right"] .hk-chapter__tags { justify-content: flex-end; }
 .hk-chapter__kicker { font-family: var(--en); letter-spacing: .26em; font-weight: 800; color: var(--pink2); font-size: .8rem; }
