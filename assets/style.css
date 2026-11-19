@@ -316,3 +316,18 @@ a { color: inherit; }
   .hk-marquee__track, .hk-contact__ball, .hk-grid__item, .hk-journey__hint i { animation: none; }
   .hk-tilt, .hk-slides__stage, .hk-slides__item, .hk-slides__item img, .hk-totop, .hk-chapter { transition: none; }
 }
+
+/* topics / partners / misc (added 2026-11-19) */
+.hk-topics { background: var(--paper); color: var(--ink); }
+.hk-topics__list { margin-top: 40px; }
+.hk-topic { border-top: 1px solid var(--line); padding: 26px 4px; }
+.hk-topic:last-child { border-bottom: 1px solid var(--line); }
+.hk-topic__meta { display: flex; align-items: center; gap: 12px; font-family: var(--en); font-size: .8rem; font-weight: 700; color: var(--muted); letter-spacing: .08em; }
+.hk-topic__cat { background: var(--night); color: #fff; border-radius: 999px; padding: 2px 12px; font-size: .72rem; letter-spacing: .06em; }
+.hk-topic__title { font-size: 1.15rem; font-weight: 900; margin: 10px 0 8px; line-height: 1.5; }
+.hk-topic__body { color: #3c4066; font-size: .95rem; }
+.hk-partners { background: #fff; color: var(--ink); }
+.hk-team__since { font-family: var(--en); font-size: .78rem; font-weight: 800; letter-spacing: .14em; color: var(--pink); margin-top: 2px; }
+.hk-contact__mail { margin-top: 10px; color: #d9dbf3; font-size: .95rem; }
+.hk-contact__mail a { color: var(--pink2); font-weight: 700; }
+.hk-footer__contact a { display: inline-flex; margin-top: 6px; }
