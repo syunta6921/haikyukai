@@ -15,360 +15,524 @@
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0f2e'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23ffffff' stroke-width='3'/%3E%3Cpath d='M18 24c8 3 12 8 13 16M46 22c-7 4-15 5-24 2M32 15c2 8 1 15-3 22' fill='none' stroke='%23ff2e8a' stroke-width='3'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261119-3d7">
-<link rel="stylesheet" href="assets/fx.css">
+<style>
+:root{
+  --navy:#0b1e3f;
+  --navy-dark:#071530;
+  --pink:#ff2e8a;
+  --ink:#1c2434;
+  --muted:#5b6577;
+  --bg-soft:#f4f6fb;
+  --line:#e2e7f0;
+  --radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic","Noto Sans JP",Meiryo,sans-serif;
+  color:var(--ink);
+  line-height:1.8;
+  background:#fff;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.sec-soft{background:var(--bg-soft)}
+.sec-navy{background:var(--navy);color:#fff}
+.sec-head{margin-bottom:36px}
+.sec-head .en{
+  font-size:12px;letter-spacing:.22em;font-weight:700;color:var(--pink);
+  text-transform:uppercase;margin-bottom:6px;
+}
+.sec-navy .sec-head .en{color:var(--pink)}
+.sec-head h2{font-size:28px;font-weight:900;letter-spacing:.04em;line-height:1.4}
+.sec-head p{margin-top:10px;color:var(--muted);font-size:15px}
+.sec-navy .sec-head p{color:#c3cbdd}
+
+/* ヘッダー */
+header{
+  position:sticky;top:0;z-index:50;background:#fff;
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  max-width:1080px;margin:0 auto;padding:10px 20px;
+  display:flex;align-items:center;gap:20px;
+}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-ball{
+  width:38px;height:38px;border-radius:10px;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.logo-text{line-height:1.25}
+.logo-name{font-size:20px;font-weight:900;letter-spacing:.14em}
+.logo-sub{font-size:9px;letter-spacing:.28em;color:var(--muted);font-weight:700}
+nav.main-nav{display:flex;gap:22px;margin-left:auto}
+nav.main-nav a{font-size:14px;font-weight:700;color:var(--ink);white-space:nowrap}
+nav.main-nav a:hover{color:var(--pink)}
+.header-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.ig-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap;
+}
+.ig-link:hover{color:var(--pink)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 26px;border-radius:999px;font-weight:800;font-size:15px;
+  transition:opacity .2s;
+}
+.btn:hover{opacity:.85}
+.btn-pink{background:var(--pink);color:#fff}
+.btn-white{background:#fff;color:var(--navy)}
+.btn-outline{border:2px solid #fff;color:#fff}
+.btn-sm{padding:9px 18px;font-size:13px}
+
+/* ヒーロー */
+.hero{
+  position:relative;color:#fff;
+  background:var(--navy-dark) url("assets/photos/photo-01.jpg") center/cover no-repeat;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(7,21,48,.88) 30%,rgba(7,21,48,.45) 70%,rgba(7,21,48,.25));
+}
+.hero-inner{position:relative;padding:110px 0 96px}
+.hero .club-tag{
+  display:inline-block;font-size:13px;font-weight:700;letter-spacing:.12em;
+  border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:5px 16px;margin-bottom:26px;
+}
+.hero h1{font-size:52px;font-weight:900;line-height:1.3;letter-spacing:.05em}
+.hero h1 .accent{color:var(--pink)}
+.hero .hero-sub{
+  margin-top:18px;font-size:17px;font-weight:700;letter-spacing:.06em;
+}
+.hero .hero-desc{margin-top:10px;font-size:15px;color:#d6dcea;max-width:560px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+
+/* 排球会について */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+.about-text p{font-size:15.5px;margin-bottom:16px}
+.about-text p:last-child{margin-bottom:0}
+.about-photo img{border-radius:var(--radius);width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.target-box{
+  margin-top:24px;background:#fff;border:1px solid var(--line);
+  border-left:5px solid var(--pink);border-radius:12px;padding:16px 20px;
+}
+.sec-soft .target-box{background:#fff}
+.target-box .t-label{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--pink)}
+.target-box .t-body{font-size:16px;font-weight:800;margin-top:2px}
+
+/* 大切にしていること */
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.value-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 22px;
+}
+.sec-navy .value-card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16)}
+.value-card .num{
+  font-size:13px;font-weight:900;letter-spacing:.2em;color:var(--pink);margin-bottom:12px;
+}
+.value-card h3{font-size:17px;font-weight:900;line-height:1.5;margin-bottom:8px}
+.value-card p{font-size:13.5px;color:var(--muted)}
+.sec-navy .value-card p{color:#c3cbdd}
+
+/* 活動案内 */
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px}
+.team-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;
+}
+.team-card .team-label{
+  display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;
+  color:#fff;background:var(--navy);border-radius:999px;padding:4px 14px;margin-bottom:14px;
+}
+.team-card.girls .team-label{background:var(--pink)}
+.team-card .days{font-size:24px;font-weight:900;letter-spacing:.03em;line-height:1.5}
+.team-card p{margin-top:8px;font-size:14px;color:var(--muted)}
+.info-table{
+  width:100%;border-collapse:collapse;background:#fff;
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+}
+.info-table th,.info-table td{
+  padding:16px 20px;font-size:15px;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--line);
+}
+.info-table tr:last-child th,.info-table tr:last-child td{border-bottom:none}
+.info-table th{
+  width:170px;background:var(--bg-soft);font-weight:800;white-space:nowrap;
+}
+.info-table .note{font-size:13px;color:var(--muted)}
+
+/* ギャラリー */
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.gallery-grid figure{border-radius:12px;overflow:hidden;aspect-ratio:4/3}
+.gallery-grid img{width:100%;height:100%;object-fit:cover}
+
+/* 体験の流れ */
+.flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.flow-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 24px;
+  position:relative;
+}
+.flow-card .step{
+  font-size:12px;font-weight:900;letter-spacing:.2em;color:var(--pink);margin-bottom:10px;
+}
+.flow-card h3{font-size:17px;font-weight:900;margin-bottom:8px}
+.flow-card p{font-size:14px;color:var(--muted)}
+
+/* FAQ */
+.faq-list{display:grid;gap:12px}
+.faq-item{
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 24px;
+}
+.faq-item .q{font-weight:900;font-size:15.5px;display:flex;gap:10px}
+.faq-item .q::before{content:"Q";color:var(--pink);font-weight:900}
+.faq-item .a{margin-top:8px;font-size:14.5px;color:var(--muted);display:flex;gap:10px}
+.faq-item .a::before{content:"A";color:var(--navy);font-weight:900}
+
+/* スタッフ */
+.staff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.staff-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+}
+.staff-card .role{
+  font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--pink);margin-bottom:10px;
+}
+.staff-card ul{list-style:none}
+.staff-card li{font-size:16px;font-weight:800;padding:7px 0;border-bottom:1px dashed var(--line)}
+.staff-card li:last-child{border-bottom:none}
+.staff-card li .sub{font-size:12.5px;font-weight:600;color:var(--muted);margin-left:8px}
+
+/* お問い合わせ */
+.contact-box{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--radius);padding:40px 32px;text-align:center;
+}
+.contact-box h3{font-size:22px;font-weight:900;margin-bottom:10px}
+.contact-box p{color:#c3cbdd;font-size:15px;margin-bottom:26px}
+
+/* フッター */
+footer{background:var(--navy-dark);color:#aeb8cf;padding:44px 0 34px}
+.footer-inner{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.footer-name{font-size:18px;font-weight:900;letter-spacing:.14em;color:#fff}
+.footer-sub{font-size:11px;letter-spacing:.24em;margin-top:2px}
+footer .ig-link{color:#aeb8cf}
+footer .ig-link:hover{color:var(--pink)}
+.copyright{margin-top:26px;font-size:12px;text-align:center;color:#77839e}
+
+/* レスポンシブ */
+@media (max-width:900px){
+  .values-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:720px){
+  section{padding:54px 0}
+  nav.main-nav{display:none}
+  .header-inner{gap:12px}
+  .ig-link span{display:none}
+  .hero-inner{padding:72px 0 64px}
+  .hero h1{font-size:36px}
+  .hero .hero-sub{font-size:15px}
+  .about-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .flow-grid{grid-template-columns:1fr}
+  .staff-grid{grid-template-columns:1fr}
+  .info-table th{width:104px;white-space:normal}
+  .sec-head h2{font-size:24px}
+}
+</style>
 </head>
 <body>
-<div class="hk-progress" aria-hidden="true"></div>
 
-<header class="hk-header">
-  <div class="hk-header__inner">
-    <a class="hk-brand" href="#top" aria-label="排球会 トップへ">
-      <span class="hk-brand__ball"><svg aria-hidden="true" width="34" height="34" viewBox="0 0 64 64"><circle class="ring" cx="32" cy="32" r="19" fill="none" stroke-width="3.4"/><path class="seam" d="M17 23c9 3 14 9 15 19M48 21c-8 5-17 6-27 3M33 13c2 9 1 17-4 25" fill="none" stroke-width="3.4"/></svg></span>
-      <span class="hk-brand__text"><span class="hk-brand__name">排球会</span><span class="hk-brand__sub">U15 VOLLEYBALL CLUB</span></span>
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#top" aria-label="排球会 トップへ">
+      <span class="logo-ball">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 64 64"><circle cx="32" cy="32" r="17" fill="none" stroke="#ffffff" stroke-width="3.4"/><path d="M18 24c8 3 12 8 13 16M46 22c-7 4-15 5-24 2M32 15c2 8 1 15-3 22" fill="none" stroke="#ff2e8a" stroke-width="3.4"/></svg>
+      </span>
+      <span class="logo-text">
+        <span class="logo-name">排球会</span><br>
+        <span class="logo-sub">HAIKYU-KAI</span>
+      </span>
     </a>
-    <nav class="hk-nav" id="hk-nav" aria-label="メインナビゲーション">
-      <a class="hk-nav__link" href="#about">排球会について</a><a class="hk-nav__link" href="#values">大切にしていること</a><a class="hk-nav__link" href="#staff">スタッフ</a><a class="hk-nav__link" href="#schedule">活動案内</a><a class="hk-nav__link" href="#gallery">ギャラリー</a><a class="hk-nav__link" href="#flow">体験の流れ</a><a class="hk-nav__link" href="#faq">よくある質問</a>
-      <a class="hk-igchip" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener" aria-label="排球会のInstagram（新しいタブで開く）"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg><span>@haikyu_club819</span></a>
-      <a class="hk-trial hk-trial--sm" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener"><span class="hk-trial__shine" aria-hidden="true"></span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg><span>体験練習に申し込む</span><span class="hk-trial__arrow" aria-hidden="true">→</span></a>
+    <nav class="main-nav" aria-label="メインナビゲーション">
+      <a href="#about">排球会について</a>
+      <a href="#schedule">活動案内</a>
+      <a href="#gallery">ギャラリー</a>
+      <a href="#staff">スタッフ</a>
+      <a href="#faq">よくある質問</a>
     </nav>
-    <button class="hk-burger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="hk-nav"><span></span><span></span><span></span></button>
+    <div class="header-actions">
+      <a class="ig-link" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener" aria-label="排球会のInstagram（新しいタブで開く）">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg>
+        <span>@haikyu_club819</span>
+      </a>
+      <a class="btn btn-pink btn-sm" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener">体験申込</a>
+    </div>
   </div>
 </header>
 
 <main id="top">
-  <!-- 3D JOURNEY: スクロールで映像が進む -->
-  <section class="hk-journey" aria-label="排球会の紹介">
-    <div class="hk-journey__stage">
-      <video class="hk-journey__video" muted playsinline preload="auto" poster="assets/world/journey-poster.jpg" data-src="assets/world/journey.mp4" data-mobile="assets/world/journey-mobile.mp4" aria-hidden="true"></video>
-      <div class="hk-journey__shade" aria-hidden="true"></div>
-      <article class="hk-chapter" data-align="left">
-          <p class="hk-chapter__kicker">TODA, SAITAMA / U15 VOLLEYBALL CLUB</p>
-          <h1 class="hk-chapter__title">一球に、全力を。</h1>
-          <p class="hk-chapter__body">埼玉県戸田市を拠点に活動する中学生のバレーボールクラブ「排球会」。男子・女子の2チームで、一球一球を大切にしています。</p>
-          <ul class="hk-chapter__tags"><li>中学生対象</li><li>男子・女子2チーム</li><li>体験練習 随時受付</li></ul>
-          
-        </article>
-<article class="hk-chapter" data-align="right">
-          <p class="hk-chapter__kicker">OUR SLOGAN</p>
-          <h2 class="hk-chapter__title">翔べ、繋げ。</h2>
-          <p class="hk-chapter__body">仲間を信じてボールをつなぐ。コートの中で自分で考え、声をかけ合える選手を育てます。</p>
-          <ul class="hk-chapter__tags"><li>普及と育成</li><li>技術力の向上</li><li>主体性と自立</li></ul>
-          
-        </article>
-<article class="hk-chapter" data-align="left">
-          <p class="hk-chapter__kicker">JOIN US</p>
-          <h2 class="hk-chapter__title">戸田から、次の一球へ。</h2>
-          <p class="hk-chapter__body">体験練習はいつでも受け付けています。お申し込みはInstagramのDMから、排球会事務局までお気軽にどうぞ。</p>
-          <ul class="hk-chapter__tags"><li>小学5・6年生は応相談</li><li>平日 19:00〜21:00</li></ul>
-          <a class="hk-trial hk-trial--lg" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener"><span class="hk-trial__shine" aria-hidden="true"></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg><span>体験練習を申し込む</span><span class="hk-trial__arrow" aria-hidden="true">→</span></a>
-        </article>
-      <nav class="hk-journey__rail" aria-label="チャプター"><button type="button"><span>一球に全力</span><i></i></button><button type="button"><span>翔べ、繋げ</span><i></i></button><button type="button"><span>次の一球へ</span><i></i></button></nav>
-      <p class="hk-journey__hint" aria-hidden="true">SCROLL<i></i></p>
-    </div>
-  </section>
 
-  <div class="hk-marquee" aria-hidden="true"><div class="hk-marquee__track"><span>一球に全力</span><b>HAIKYU CLUB</b><span>翔べ、繋げ</span><b>U15 VOLLEYBALL</b><span>一球に全力</span><b>HAIKYU CLUB</b><span>翔べ、繋げ</span><b>U15 VOLLEYBALL</b><span>一球に全力</span><b>HAIKYU CLUB</b><span>翔べ、繋げ</span><b>U15 VOLLEYBALL</b><span>一球に全力</span><b>HAIKYU CLUB</b><span>翔べ、繋げ</span><b>U15 VOLLEYBALL</b></div></div>
-
-
-  <section class="fx-stats" aria-label="排球会の数字">
-    <div class="hk-container">
-      <div class="fx-stats__grid">
-        <div class="fx-stat"><p class="fx-stat__num" data-count="2">2<small>チーム</small></p><p class="fx-stat__label"><b>TEAMS</b>男子チーム・女子チーム</p></div>
-        <div class="fx-stat"><p class="fx-stat__num" data-count="2">2<small>日／週</small></p><p class="fx-stat__label"><b>PRACTICE</b>各チームの練習日（＋隔週で土日に試合）</p></div>
-        <div class="fx-stat"><p class="fx-stat__num">19:00<small>〜</small></p><p class="fx-stat__label"><b>WEEKDAY</b>平日の活動は19:00〜21:00</p></div>
-        <div class="fx-stat"><p class="fx-stat__num" data-count="6">6<small>名</small></p><p class="fx-stat__label"><b>STAFF</b>代表・スタッフ・トレーナー・アドバイザー</p></div>
+  <!-- ヒーロー -->
+  <section class="hero" style="padding:0">
+    <div class="wrap hero-inner">
+      <span class="club-tag">U15 VOLLEYBALL CLUB</span>
+      <h1>一球に<span class="accent">全力</span>。<br>翔べ、繋げ。</h1>
+      <p class="hero-sub">埼玉県戸田市のU15バレーボールクラブ</p>
+      <p class="hero-desc">排球会は、埼玉県戸田市を拠点に活動する中学生のバレーボールクラブです。男子・女子の2チームで、一球一球を大切に活動しています。</p>
+      <div class="hero-btns">
+        <a class="btn btn-pink" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener">体験練習に申し込む</a>
+        <a class="btn btn-outline" href="#schedule">活動案内を見る</a>
       </div>
     </div>
   </section>
-  <section class="hk-showcase" aria-label="排球会の写真">
-    <div class="hk-container hk-showcase__grid">
-      <div data-reveal>
-        <p class="hk-showcase__eyebrow">TODA, SAITAMA</p>
-        <h2 class="hk-showcase__title">コートの上の<br><em>本気</em>と<em>笑顔</em>。</h2>
-        <p class="hk-showcase__lead">男子チーム・女子チームの2チームで、一球一球を大切に活動しています。体験練習はいつでも受付中です。</p>
-        <ul class="hk-chips"><li>対象：中学生<small>（小学5・6年生は応相談）</small></li><li>男子チーム／女子チーム</li><li>体験練習はいつでも受付中</li></ul>
-        <div class="hk-actions"><a class="hk-trial hk-trial--lg" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener"><span class="hk-trial__shine" aria-hidden="true"></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg><span>体験練習を申し込む</span><span class="hk-trial__arrow" aria-hidden="true">→</span></a><a class="hk-textlink" href="#schedule">活動案内を見る<span aria-hidden="true">↓</span></a></div>
+
+  <!-- 排球会について -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="en">About</p>
+        <h2>排球会について</h2>
       </div>
-      <div class="hk-slides" data-reveal>
-        <div class="hk-slides__stage">
-          <figure class="hk-slides__item is-active"><img src="assets/photos/photo-01.jpg" alt="体育館でジャンプサーブを打つ排球会の男子選手" ></figure>
-<figure class="hk-slides__item"><img src="assets/photos/photo-16.jpg" alt="ボールを見上げてサーブを構える排球会の男子選手" loading="lazy"></figure>
-<figure class="hk-slides__item"><img src="assets/photos/photo-11.jpg" alt="試合でスパイクを打つ選手とブロックする選手" loading="lazy"></figure>
-<figure class="hk-slides__item"><img src="assets/photos/photo-03.jpg" alt="試合で得点を喜ぶ排球会の女子チーム" loading="lazy"></figure>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>排球会は、埼玉県戸田市を拠点に活動するU15（中学生）バレーボールクラブです。男子チームと女子チームの2チームがあり、平日の夜を中心に練習を行っています。</p>
+          <p>バレーボールの普及と育成を軸に、確かな技術力の向上はもちろん、選手自身が考えて動く「主体性」と「自立」を大切にしています。</p>
+          <p>体験練習はいつでも受け付けています。まずはお気軽に、練習の雰囲気を見に来てください。</p>
+          <div class="target-box">
+            <p class="t-label">対象</p>
+            <p class="t-body">中学生（小学5・6年生は応相談）</p>
+          </div>
         </div>
-        <div class="hk-slides__dots" role="tablist" aria-label="写真スライドの切り替え"><button type="button" role="tab" aria-label="写真1を表示" aria-selected="true" class="is-active"></button><button type="button" role="tab" aria-label="写真2を表示" aria-selected="false"></button><button type="button" role="tab" aria-label="写真3を表示" aria-selected="false"></button><button type="button" role="tab" aria-label="写真4を表示" aria-selected="false"></button></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="hk-section hk-about" id="about">
-    <div class="hk-container hk-about__grid">
-      <div>
-        <p class="hk-label" data-reveal><span>ABOUT</span>排球会について</p>
-        <h2 class="hk-title" data-reveal>戸田市から、<br>バレーボールの輪を広げる。</h2>
-        <div class="hk-prose" data-reveal>
-          <p>排球会は、埼玉県戸田市を拠点に活動する<strong>U15（中学生）バレーボールクラブ</strong>です。男子チームと女子チームがあり、それぞれ平日の練習に加えて、隔週の土日には試合・大会に参加しています。</p>
-          <p>バレーボールの<strong>普及と育成</strong>を掲げ、確かな技術力の向上はもちろん、選手一人ひとりの<strong>主体性</strong>と<strong>自立</strong>を大切にしています。</p>
-          <p>横断幕に掲げられた「<strong>一球に全力</strong>」「<strong>翔べ、繋げ</strong>」の言葉のとおり、一球一球を大切にし、仲間とボールをつなぐバレーボールを目指しています。</p>
+        <div class="about-photo">
+          <img src="assets/photos/photo-04.jpg" alt="横断幕「一球に全力」の前で撮影した男子チームの集合写真">
         </div>
-        <dl class="hk-facts" data-reveal><div><dt>拠点</dt><dd>埼玉県戸田市（活動場所：戸田市近辺の小・中学校）</dd></div><div><dt>対象</dt><dd>中学生（小学5・6年生は応相談）</dd></div><div><dt>チーム</dt><dd>男子チーム／女子チーム</dd></div><div><dt>代表</dt><dd>安倍歩美</dd></div><div><dt>スタッフ</dt><dd>永原滋<br>川田來人<br>山岡史哉<br>青木陽大</dd></div><div><dt>トレーナー</dt><dd>安倍ケビン隼汰</dd></div><div><dt>アドバイザースタッフ</dt><dd>落合一貴（2023〜2024 女子監督）<br>武田惇（2025 男子監督）</dd></div><div><dt>お問い合わせ</dt><dd>排球会事務局（Instagram DM）</dd></div></dl>
-      </div>
-      <div class="hk-about__media" data-reveal>
-        <div class="hk-tilt hk-about__main"><div class="hk-tilt__inner"><img src="assets/photos/photo-16.jpg" alt="ボールを見上げてサーブを構える排球会の男子選手" loading="lazy"></div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-        <div class="hk-tilt hk-about__sub"><div class="hk-tilt__inner"><img src="assets/photos/photo-02.jpg" alt="笑顔を見せる排球会の女子選手たち" loading="lazy"></div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-        <p class="hk-about__badge" aria-hidden="true">SINCE THE COURT<strong>一球に全力</strong></p>
       </div>
     </div>
   </section>
 
-  <section class="hk-section hk-topics" id="topics">
-    <div class="hk-container">
-      <p class="hk-label" data-reveal><span>TOPICS</span>お知らせ</p>
-      <h2 class="hk-title" data-reveal>最新情報</h2>
-      <div class="hk-topics__list">
-        <article class="hk-topic" data-reveal>
-          <p class="hk-topic__meta"><time datetime="2026-10-25">2026.10.25</time><span class="hk-topic__cat">大会報告</span></p>
-          <h3 class="hk-topic__title">戸田市秋季大会に出場／排球会シニアがデビュー戦を迎えました</h3>
-          <p class="hk-topic__body">10月25日、排球会は戸田市秋季大会に出場しました。日頃の練習の成果を発揮しながら、それぞれが全力で大会に臨みました。あわせて、排球会のOGOBを中心に結成された「排球会シニア」がデビュー戦を迎えました。世代を超えてつながる排球会らしさが感じられる、記念すべき一日となりました。</p>
-        </article>
-        <article class="hk-topic" data-reveal>
-          <p class="hk-topic__meta"><time datetime="2026-10-12">2026.10.12</time><span class="hk-topic__cat">開催報告</span></p>
-          <h3 class="hk-topic__title">小学生対象バレーボール教室を開催しました</h3>
-          <p class="hk-topic__body">10月12日、排球会主催の小学生向けバレーボール教室を開催しました。ご参加いただいた皆さま、ありがとうございました！</p>
-        </article>
+  <!-- 大切にしていること -->
+  <section class="sec-navy" id="values">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="en">Values</p>
+        <h2>大切にしていること</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <p class="num">01</p>
+          <h3>バレーボールの<br>普及と育成</h3>
+          <p>バレーボールを始めるきっかけの場として、地域の子どもたちに開かれたクラブを目指します。</p>
+        </div>
+        <div class="value-card">
+          <p class="num">02</p>
+          <h3>確かな技術力<br>の向上</h3>
+          <p>基礎を大切に、一つひとつのプレーの質を高める練習を積み重ねます。</p>
+        </div>
+        <div class="value-card">
+          <p class="num">03</p>
+          <h3>主体性</h3>
+          <p>言われたことをこなすだけでなく、コートの中で自分で考え、判断できる選手を育てます。</p>
+        </div>
+        <div class="value-card">
+          <p class="num">04</p>
+          <h3>自立</h3>
+          <p>準備や声かけなど、プレー以外の場面でも自分から動ける姿勢を大切にします。</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="hk-section hk-values" id="values">
-    <div class="hk-container">
-      <p class="hk-label hk-label--light" data-reveal><span>VALUES</span>大切にしていること</p>
-      <h2 class="hk-title hk-title--light" data-reveal>排球会が大切にしていること</h2>
-      <div class="hk-values__grid">
-        <div class="hk-tilt hk-value"><div class="hk-tilt__inner"><p class="hk-value__num">01</p><h3>普及</h3><p>バレーボールの楽しさと魅力を広げ、競技に親しむ機会をつくります。</p></div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-value"><div class="hk-tilt__inner"><p class="hk-value__num">02</p><h3>育成</h3><p>一人ひとりの個性を大切に、可能性を最大限に引き出します。</p></div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-value"><div class="hk-tilt__inner"><p class="hk-value__num">03</p><h3>確かな技術力の<br>向上</h3><p>基礎を大切に、積み重ねの中で確かな技術を身につけます。サーブ、レシーブ、トス、スパイク。一つひとつのプレーを丁寧に積み重ねます。</p></div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-value"><div class="hk-tilt__inner"><p class="hk-value__num">04</p><h3>主体性</h3><p>自ら考え、判断し、行動する力を磨きます。言われたことをこなすだけではなく、コートの中で自分で判断できる選手を育てます。</p></div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-value"><div class="hk-tilt__inner"><p class="hk-value__num">05</p><h3>自立</h3><p>コートの中でも外でも、自分の行動に責任を持てる人へ。準備や片付け、体調管理まで、自分のことは自分でやる力を育てます。</p></div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
+  <!-- 活動案内 -->
+  <section class="sec-soft" id="schedule">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="en">Schedule</p>
+        <h2>活動案内</h2>
+        <p>男子チーム・女子チームの2チームで活動しています。</p>
       </div>
-      <figure class="hk-values__banner" data-reveal>
-        <img src="assets/photos/photo-04.jpg" alt="横断幕「一球に全力」の前で撮影した排球会男子チームの集合写真" loading="lazy">
-        <figcaption>横断幕「一球に全力」の前で ／ 排球会 男子チーム</figcaption>
-      </figure>
+      <div class="team-grid">
+        <div class="team-card">
+          <span class="team-label">男子チーム</span>
+          <p class="days">月曜・水曜<br>＋ 隔週で土日</p>
+          <p>平日は19:00〜21:00に活動。土日は隔週で試合・大会に参加します。</p>
+        </div>
+        <div class="team-card girls">
+          <span class="team-label">女子チーム</span>
+          <p class="days">火曜・土曜<br>＋ 隔週で土日</p>
+          <p>平日は19:00〜21:00に活動。土日は隔週で試合・大会に参加します。</p>
+        </div>
+      </div>
+      <table class="info-table">
+        <tr>
+          <th>対象</th>
+          <td>中学生（小学5・6年生は応相談）</td>
+        </tr>
+        <tr>
+          <th>活動時間</th>
+          <td>平日 19:00〜21:00<span class="note">（土日は隔週で試合・大会に参加）</span></td>
+        </tr>
+        <tr>
+          <th>活動場所</th>
+          <td>戸田市近辺の小・中学校<span class="note">　※詳細はお問い合わせください</span></td>
+        </tr>
+        <tr>
+          <th>体験練習</th>
+          <td>いつでも受付中<span class="note">（InstagramのDMからお申し込みください）</span></td>
+        </tr>
+      </table>
     </div>
   </section>
 
-  <div class="hk-band" aria-hidden="true"><img src="assets/photos/photo-13.jpg" alt="" loading="lazy"><p>翔べ、<em>繋げ</em>。</p></div>
-
-  <section class="hk-section hk-staff" id="staff">
-    <div class="hk-container">
-      <p class="hk-label" data-reveal><span>STAFF</span>スタッフ紹介</p>
-      <h2 class="hk-title" data-reveal>チームを支えるスタッフ</h2>
-      <p class="hk-lead" data-reveal>代表・スタッフ・トレーナー・アドバイザーが、選手一人ひとりの成長を支えています。</p>
-      <!-- スタッフ紹介：文章の途中で改行（Enter）すると、そのままサイト上でも改行されます -->
-      <div class="hk-staff__grid">
-        <div class="hk-tilt hk-person"><div class="hk-tilt__inner">
-            <p class="hk-person__mono" aria-hidden="true">歩</p>
-            <p class="hk-person__role">代表</p>
-            <h3 class="hk-person__name">安倍 歩美</h3>
-            <p class="hk-person__note">排球会の代表として、
-チーム全体の運営を担っています。</p>
-          </div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-person"><div class="hk-tilt__inner">
-            <p class="hk-person__mono" aria-hidden="true">滋</p>
-            <p class="hk-person__role">スタッフ</p>
-            <h3 class="hk-person__name">永原 滋</h3>
-            <p class="hk-person__note">スタッフとして、
-日々の活動を支えています。</p>
-          </div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-person"><div class="hk-tilt__inner">
-            <p class="hk-person__mono" aria-hidden="true">來</p>
-            <p class="hk-person__role">スタッフ</p>
-            <h3 class="hk-person__name">川田 來人</h3>
-            <p class="hk-person__note">スタッフとして、
-日々の活動を支えています。</p>
-          </div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-person"><div class="hk-tilt__inner">
-            <p class="hk-person__mono" aria-hidden="true">史</p>
-            <p class="hk-person__role">スタッフ</p>
-            <h3 class="hk-person__name">山岡 史哉</h3>
-            <p class="hk-person__note">スタッフとして、
-日々の活動を支えています。</p>
-          </div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-person"><div class="hk-tilt__inner">
-            <p class="hk-person__mono" aria-hidden="true">陽</p>
-            <p class="hk-person__role">スタッフ</p>
-            <h3 class="hk-person__name">青木 陽大</h3>
-            <p class="hk-person__note">スタッフとして、
-日々の活動を支えています。</p>
-          </div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-person"><div class="hk-tilt__inner">
-            <p class="hk-person__mono" aria-hidden="true">隼</p>
-            <p class="hk-person__role">トレーナー</p>
-            <h3 class="hk-person__name">安倍 ケビン隼汰</h3>
-            <p class="hk-person__note">トレーナーとして、選手の
-コンディショニングと身体づくりを担当しています。</p>
-          </div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-person"><div class="hk-tilt__inner">
-            <p class="hk-person__mono" aria-hidden="true">貴</p>
-            <p class="hk-person__role">アドバイザースタッフ</p>
-            <h3 class="hk-person__name">落合 一貴</h3>
-            <p class="hk-person__note">2023〜2024年には
-女子チームの監督を務めました。
-（現レッズバレーボールクラブ監督・中央学院大学コーチ）</p>
-          </div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
-<div class="hk-tilt hk-person"><div class="hk-tilt__inner">
-            <p class="hk-person__mono" aria-hidden="true">惇</p>
-            <p class="hk-person__role">アドバイザースタッフ</p>
-            <h3 class="hk-person__name">武田 惇</h3>
-            <p class="hk-person__note">2025年には
-男子チームの監督を務めました。
-（現埼玉栄高校男子バレーボール部監督）</p>
-          </div><span class="hk-tilt__glare" aria-hidden="true"></span></div>
+  <!-- ギャラリー -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="en">Gallery</p>
+        <h2>ギャラリー</h2>
+        <p>日々の練習や試合の様子です。</p>
+      </div>
+      <div class="gallery-grid">
+        <figure><img src="assets/photos/photo-03.jpg" alt="体育館で勝利を喜ぶ女子選手たち" loading="lazy"></figure>
+        <figure><img src="assets/photos/photo-06.jpg" alt="コートに整列して歓声を上げる男子選手たち" loading="lazy"></figure>
+        <figure><img src="assets/photos/photo-11.jpg" alt="試合でスパイクとブロックが競り合う場面" loading="lazy"></figure>
+        <figure><img src="assets/photos/photo-13.jpg" alt="トロフィーを囲んだ全員の集合写真" loading="lazy"></figure>
+        <figure><img src="assets/photos/photo-02.jpg" alt="笑顔の女子選手のアップ" loading="lazy"></figure>
+        <figure><img src="assets/photos/photo-12.jpg" alt="笑顔の女子選手（10番）" loading="lazy"></figure>
+        <figure><img src="assets/photos/photo-04.jpg" alt="横断幕「一球に全力」の前での集合写真" loading="lazy"></figure>
+        <figure><img src="assets/photos/photo-01.jpg" alt="ジャンプサーブを打つ男子選手" loading="lazy"></figure>
       </div>
     </div>
   </section>
 
-  <section class="hk-section hk-schedule" id="schedule">
-    <div class="hk-container">
-      <p class="hk-label" data-reveal><span>SCHEDULE</span>活動案内</p>
-      <h2 class="hk-title" data-reveal>活動案内</h2>
-      <p class="hk-lead" data-reveal>男子チーム・女子チームそれぞれに活動日があります。平日の活動時間は19:00〜21:00、活動場所は戸田市近辺の小・中学校です。</p>
-      <div class="hk-teams">
-          <article class="hk-team hk-team--boys" data-reveal>
-            <div class="hk-team__photo"><img src="assets/photos/photo-06.jpg" alt="コートに整列して声を出す排球会の男子選手たち" loading="lazy"><p>BOYS</p></div>
-            <div class="hk-team__body">
-              <h3>男子チーム</h3>
-              <p class="hk-team__since">2022年 活動開始</p>
-              <p class="hk-team__days"><strong>月曜・水曜</strong><span>＋ 隔週で土日</span></p>
-              <p class="hk-team__time">平日の活動時間 19:00〜21:00</p>
-              <table class="hk-week" aria-label="男子チームの週間活動日"><thead><tr><th scope="col">月</th><th scope="col">火</th><th scope="col">水</th><th scope="col">木</th><th scope="col">金</th><th scope="col">土</th><th scope="col">日</th></tr></thead><tbody><tr><td class="on"><span aria-label="活動日">●</span></td><td><span aria-label="休み">ー</span></td><td class="on"><span aria-label="活動日">●</span></td><td><span aria-label="休み">ー</span></td><td><span aria-label="休み">ー</span></td><td class="bi">隔週</td><td class="bi">隔週</td></tr></tbody></table>
-              <p class="hk-team__note">平日は月曜・水曜の19:00〜21:00に活動。土日は隔週で試合・大会に参加します。</p>
-            </div>
-          </article>
-<article class="hk-team hk-team--girls" data-reveal>
-            <div class="hk-team__photo"><img src="assets/photos/photo-08.jpg" alt="得点を喜ぶ排球会の女子選手" loading="lazy"><p>GIRLS</p></div>
-            <div class="hk-team__body">
-              <h3>女子チーム</h3>
-              <p class="hk-team__since">2021年 活動開始</p>
-              <p class="hk-team__days"><strong>火曜・土曜</strong><span>＋ 隔週で土日</span></p>
-              <p class="hk-team__time">平日の活動時間 19:00〜21:00（火曜）</p>
-              <table class="hk-week" aria-label="女子チームの週間活動日"><thead><tr><th scope="col">月</th><th scope="col">火</th><th scope="col">水</th><th scope="col">木</th><th scope="col">金</th><th scope="col">土</th><th scope="col">日</th></tr></thead><tbody><tr><td><span aria-label="休み">ー</span></td><td class="on"><span aria-label="活動日">●</span></td><td><span aria-label="休み">ー</span></td><td><span aria-label="休み">ー</span></td><td><span aria-label="休み">ー</span></td><td class="on"><span aria-label="活動日">●</span></td><td class="bi">隔週</td></tr></tbody></table>
-              <p class="hk-team__note">火曜（19:00〜21:00）と土曜に活動。日曜は隔週で試合・大会に参加します。</p>
-            </div>
-          </article>
+  <!-- 体験練習・入会の流れ -->
+  <section class="sec-soft" id="flow">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="en">Flow</p>
+        <h2>体験練習・入会の流れ</h2>
       </div>
-      <div class="hk-notes"><div class="hk-note" data-reveal><h4>対象</h4><p>中学生が対象です。小学5・6年生は応相談となりますので、まずはお気軽にお問い合わせください。</p></div><div class="hk-note" data-reveal><h4>時間</h4><p>平日は19:00〜21:00に活動しています。土日は隔週で試合・大会に参加しています（時間は試合ごとに異なります）。</p></div><div class="hk-note" data-reveal><h4>場所</h4><p>活動場所は戸田市近辺の小・中学校です。詳細はお問い合わせの際にご案内します。</p></div><div class="hk-note" data-reveal><h4>費用</h4><p>費用の詳細はお問い合わせください。</p></div></div>
-    </div>
-  </section>
-
-  <section class="hk-section hk-gallery" id="gallery">
-    <div class="hk-container">
-      <p class="hk-label hk-label--light" data-reveal><span>GALLERY</span>ギャラリー</p>
-      <h2 class="hk-title hk-title--light" data-reveal>コートの上の、一瞬を。</h2>
-      <p class="hk-lead hk-lead--light" data-reveal>練習や試合の様子です。写真をクリックすると大きく表示されます。</p>
-      <div class="hk-filters" role="group" aria-label="ギャラリーの絞り込み"><button type="button" data-filter="all" aria-pressed="true" class="is-active">すべて</button><button type="button" data-filter="試合" aria-pressed="false">試合</button><button type="button" data-filter="練習" aria-pressed="false">練習</button><button type="button" data-filter="チーム" aria-pressed="false">チーム</button><button type="button" data-filter="横断幕" aria-pressed="false">横断幕</button></div>
-      <div class="hk-grid">
-        <button type="button" class="hk-grid__item wide" data-tag="試合"><img src="assets/photos/photo-11.jpg" alt="試合でスパイクを打つ選手とブロックする選手" loading="lazy"><span class="hk-grid__tag">試合</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item tall" data-tag="試合"><img src="assets/photos/photo-03.jpg" alt="試合で得点を喜ぶ排球会の女子チーム" loading="lazy"><span class="hk-grid__tag">試合</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item " data-tag="試合"><img src="assets/photos/photo-01.jpg" alt="体育館でジャンプサーブを打つ排球会の男子選手" loading="lazy"><span class="hk-grid__tag">試合</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item " data-tag="練習"><img src="assets/photos/photo-10.jpg" alt="練習でランニングをする排球会の男子選手たち" loading="lazy"><span class="hk-grid__tag">練習</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item tall" data-tag="試合"><img src="assets/photos/photo-08.jpg" alt="得点を喜ぶ排球会の女子選手" loading="lazy"><span class="hk-grid__tag">試合</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item " data-tag="チーム"><img src="assets/photos/photo-12.jpg" alt="コートで笑顔を見せる排球会の女子選手" loading="lazy"><span class="hk-grid__tag">チーム</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item wide" data-tag="練習"><img src="assets/photos/photo-15.jpg" alt="体育館で練習する排球会の男子選手たち" loading="lazy"><span class="hk-grid__tag">練習</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item " data-tag="試合"><img src="assets/photos/photo-06.jpg" alt="コートに整列して声を出す排球会の男子選手たち" loading="lazy"><span class="hk-grid__tag">試合</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item tall" data-tag="試合"><img src="assets/photos/photo-16.jpg" alt="ボールを見上げてサーブを構える排球会の男子選手" loading="lazy"><span class="hk-grid__tag">試合</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item " data-tag="チーム"><img src="assets/photos/photo-02.jpg" alt="笑顔を見せる排球会の女子選手たち" loading="lazy"><span class="hk-grid__tag">チーム</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item " data-tag="試合"><img src="assets/photos/photo-14.jpg" alt="試合会場で整列する排球会の男子選手たち" loading="lazy"><span class="hk-grid__tag">試合</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item " data-tag="チーム"><img src="assets/photos/photo-07.jpg" alt="表彰状を手に撮影した排球会男子チームの集合写真" loading="lazy"><span class="hk-grid__tag">チーム</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item wide" data-tag="チーム"><img src="assets/photos/photo-13.jpg" alt="大会会場の前でトロフィーを手に撮影した排球会全員の集合写真" loading="lazy"><span class="hk-grid__tag">チーム</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item " data-tag="チーム"><img src="assets/photos/photo-04.jpg" alt="横断幕「一球に全力」の前で撮影した排球会男子チームの集合写真" loading="lazy"><span class="hk-grid__tag">チーム</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item wide" data-tag="横断幕"><img src="assets/photos/photo-09.jpg" alt="2025年度卒団生一同の横断幕「一球に全力」" loading="lazy"><span class="hk-grid__tag">横断幕</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
-<button type="button" class="hk-grid__item wide" data-tag="横断幕"><img src="assets/photos/photo-05.jpg" alt="卒業生から贈られた横断幕「翔べ 繋げ」" loading="lazy"><span class="hk-grid__tag">横断幕</span><span class="hk-grid__zoom" aria-hidden="true">＋</span></button>
+      <div class="flow-grid">
+        <div class="flow-card">
+          <p class="step">STEP 1</p>
+          <h3>InstagramのDMで問い合わせ</h3>
+          <p>排球会のInstagram（@haikyu_club819）へDMでご連絡ください。体験練習の希望日などをお伝えください。</p>
+        </div>
+        <div class="flow-card">
+          <p class="step">STEP 2</p>
+          <h3>体験練習に参加</h3>
+          <p>実際の練習に参加して、チームの雰囲気や練習内容を体験していただきます。体験はいつでも受け付けています。</p>
+        </div>
+        <div class="flow-card">
+          <p class="step">STEP 3</p>
+          <h3>入会</h3>
+          <p>体験を経て、入会を希望される場合は事務局がご案内します。費用などの詳細もこのタイミングでご説明します。</p>
+        </div>
       </div>
-      <div class="hk-videos">
-        <figure class="hk-video" data-reveal><video src="assets/photos/video-01.mp4" poster="assets/photos/poster-01.jpg" controls muted playsinline preload="none" aria-label="排球会の写真コラージュ動画（縦型）"></video><figcaption>排球会 MOVIE 01</figcaption></figure>
-        <figure class="hk-video" data-reveal><video src="assets/photos/video-02.mp4" poster="assets/photos/poster-02.jpg" controls muted playsinline preload="none" aria-label="排球会の写真コラージュ動画"></video><figcaption>排球会 MOVIE 02</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- よくある質問 -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="en">FAQ</p>
+        <h2>よくある質問</h2>
       </div>
-      <p class="hk-gallery__note">動画・写真は排球会のInstagram（<a href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener">@haikyu_club819</a>）でも公開しています。</p>
+      <div class="faq-list">
+        <div class="faq-item">
+          <p class="q">対象学年を教えてください。</p>
+          <p class="a">中学生が対象です。小学5・6年生については応相談となりますので、まずはお問い合わせください。</p>
+        </div>
+        <div class="faq-item">
+          <p class="q">体験練習はできますか？</p>
+          <p class="a">はい。体験練習はいつでも受け付けています。InstagramのDMからお気軽にご連絡ください。</p>
+        </div>
+        <div class="faq-item">
+          <p class="q">活動日と時間を教えてください。</p>
+          <p class="a">男子チームは月曜・水曜、女子チームは火曜・土曜が基本の活動日で、いずれも隔週で土日に試合・大会へ参加します。平日の活動時間は19:00〜21:00です。</p>
+        </div>
+        <div class="faq-item">
+          <p class="q">費用はどのくらいかかりますか？</p>
+          <p class="a">費用の詳細はお問い合わせください。体験練習の際にもご説明します。</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="hk-section hk-flow" id="flow">
-    <div class="hk-container">
-      <p class="hk-label" data-reveal><span>JOIN US</span>体験練習・入会の流れ</p>
-      <h2 class="hk-title" data-reveal>まずは、体験練習から。</h2>
-      <ol class="hk-steps">
-        <li class="hk-step" data-reveal><p class="hk-step__num">STEP 1</p><h3>お問い合わせ</h3><p>InstagramのDM、またはメール（todahigashi819@gmail.com）から、排球会事務局へご連絡ください。体験練習はいつでも受け付けています。学年と、男子・女子の別をお知らせいただけるとスムーズです。</p><a class="hk-steplink" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg>Instagramで問い合わせる</a></li>
-<li class="hk-step" data-reveal><p class="hk-step__num">STEP 2</p><h3>体験練習に参加</h3><p>体験練習はいつでも参加できます。実際の練習に参加して、チームの雰囲気や練習の様子を体験してください。日程や持ち物は、お問い合わせの際にご案内します。</p></li>
-<li class="hk-step" data-reveal><p class="hk-step__num">STEP 3</p><h3>入会</h3><p>体験を経て、入会の手続きをご案内します。活動の詳細や費用については、この際にご説明します。</p></li>
-      </ol>
+  <!-- スタッフ -->
+  <section class="sec-soft" id="staff">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="en">Staff</p>
+        <h2>スタッフ</h2>
+      </div>
+      <div class="staff-grid">
+        <div class="staff-card">
+          <p class="role">代表</p>
+          <ul>
+            <li>安倍歩美</li>
+          </ul>
+        </div>
+        <div class="staff-card">
+          <p class="role">スタッフ</p>
+          <ul>
+            <li>永原滋</li>
+            <li>川田來人</li>
+            <li>山岡史哉</li>
+            <li>青木陽大</li>
+          </ul>
+        </div>
+        <div class="staff-card">
+          <p class="role">アドバイザースタッフ</p>
+          <ul>
+            <li>落合一貴<span class="sub">2023〜2024 女子監督</span></li>
+            <li>武田惇<span class="sub">2025 男子監督</span></li>
+          </ul>
+        </div>
+        <div class="staff-card">
+          <p class="role">トレーナー</p>
+          <ul>
+            <li>安倍ケビン隼汰</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="hk-section hk-faq" id="faq">
-    <div class="hk-container hk-container--narrow">
-      <p class="hk-label" data-reveal><span>FAQ</span>よくある質問</p>
-      <h2 class="hk-title" data-reveal>よくある質問</h2>
-      <details class="hk-qa" data-reveal><summary>対象学年を教えてください。</summary><p>中学生が対象です。小学5・6年生については応相談となりますので、まずはお気軽にお問い合わせください。</p></details>
-<details class="hk-qa" data-reveal><summary>体験練習に参加するにはどうすればいいですか？</summary><p>体験練習はいつでも参加できます。InstagramのDMから、排球会事務局までご連絡ください。体験の日程や持ち物をご案内します。</p></details>
-<details class="hk-qa" data-reveal><summary>活動日はいつですか？</summary><p>男子チームは月曜・水曜、女子チームは火曜・土曜に練習し、隔週の土日には試合・大会に参加しています。詳しくは「活動案内」をご覧ください。</p></details>
-<details class="hk-qa" data-reveal><summary>活動時間と場所を教えてください。</summary><p>平日の活動時間は19:00〜21:00、活動場所は戸田市近辺の小・中学校です。土日は隔週で試合・大会に参加しています。詳しくはInstagramのDMから排球会事務局へご連絡ください。</p></details>
-<details class="hk-qa" data-reveal><summary>費用はかかりますか？</summary><p>費用の詳細はお問い合わせください。体験練習の際にご説明することも可能です。</p></details>
-<details class="hk-qa" data-reveal><summary>バレーボールの経験がなくても大丈夫ですか？</summary><p>経験の状況については、体験練習の際にご相談ください。まずは練習の雰囲気を見に来ていただくところからで大丈夫です。</p></details>
+  <!-- お問い合わせ -->
+  <section class="sec-navy" id="contact" style="padding:72px 0">
+    <div class="wrap">
+      <div class="contact-box">
+        <h3>体験練習・お問い合わせ</h3>
+        <p>お問い合わせは排球会事務局まで。InstagramのDMからお気軽にご連絡ください。<br>体験練習はいつでも受け付けています。</p>
+        <a class="btn btn-pink" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener">Instagramで問い合わせる</a>
+      </div>
     </div>
   </section>
 
-  <section class="hk-section hk-partners" id="partners">
-    <div class="hk-container hk-container--narrow">
-      <p class="hk-label" data-reveal><span>PARTNERS</span>パートナー</p>
-      <h2 class="hk-title" data-reveal>活動を支えてくださる<br>パートナーを募集しています</h2>
-      <p class="hk-lead" data-reveal>排球会の活動を支えてくださるパートナーの皆さまをご紹介します。排球会では、子どもたちのより良い未来を共に支えてくださるパートナーを募集しています。</p>
-      <p data-reveal><a class="hk-steplink" href="mailto:todahigashi819@gmail.com">パートナーに関するお問い合わせ（メール）→</a></p>
-    </div>
-  </section>
-
-  <section class="hk-contact" id="contact">
-    <div class="hk-contact__ball" aria-hidden="true"></div>
-    <div class="hk-container hk-contact__inner" data-reveal>
-      <p class="hk-contact__eyebrow">CONTACT ／ 排球会事務局</p>
-      <h2 class="hk-contact__title">一球に全力な仲間を、<br>待っています。</h2>
-      <p class="hk-contact__lead">体験練習はいつでも受付中です。体験・見学のお申し込み、活動に関するご質問は、排球会事務局までお気軽にご連絡ください。</p>
-      <a class="hk-trial hk-trial--lg" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener"><span class="hk-trial__shine" aria-hidden="true"></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg><span>InstagramのDMで問い合わせる</span><span class="hk-trial__arrow" aria-hidden="true">→</span></a>
-      <p class="hk-contact__ig">@haikyu_club819（排球会 公式Instagram）</p>
-      <p class="hk-contact__mail">メール：<a href="mailto:todahigashi819@gmail.com">todahigashi819@gmail.com</a>（排球会事務局）</p>
-    </div>
-  </section>
 </main>
 
-<footer class="hk-footer">
-  <div class="hk-container hk-footer__inner">
-    <div>
-      <p class="hk-footer__name"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 64 64"><circle class="ring" cx="32" cy="32" r="19" fill="none" stroke-width="3.4"/><path class="seam" d="M17 23c9 3 14 9 15 19M48 21c-8 5-17 6-27 3M33 13c2 9 1 17-4 25" fill="none" stroke-width="3.4"/></svg>排球会</p>
-      <p class="hk-footer__sub">U15 VOLLEYBALL CLUB ／ 埼玉県戸田市</p>
-      <p class="hk-footer__slogan">一球に全力 ／ 翔べ、繋げ</p>
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-name">排球会</p>
+        <p class="footer-sub">HAIKYU-KAI / U15 VOLLEYBALL CLUB</p>
+      </div>
+      <a class="ig-link" href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener" aria-label="排球会のInstagram（新しいタブで開く）">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg>
+        <span>@haikyu_club819</span>
+      </a>
     </div>
-    <nav class="hk-footer__nav" aria-label="フッターナビゲーション"><a href="#about">排球会について</a><a href="#topics">お知らせ</a><a href="#values">大切にしていること</a><a href="#staff">スタッフ</a><a href="#schedule">活動案内</a><a href="#gallery">ギャラリー</a><a href="#flow">体験の流れ</a><a href="#faq">よくある質問</a><a href="#partners">パートナー</a><a href="#contact">お問い合わせ</a></nav>
-    <div class="hk-footer__contact"><p>お問い合わせ：排球会事務局</p><a href="https://www.instagram.com/haikyu_club819/" target="_blank" rel="noopener"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></svg>@haikyu_club819</a><a href="mailto:todahigashi819@gmail.com">todahigashi819@gmail.com</a></div>
+    <p class="copyright">© 排球会</p>
   </div>
-  <p class="hk-footer__copy">© <span id="year">2026</span> 排球会（U15バレーボールクラブ） All Rights Reserved.</p>
-  <p class="hk-footer__credit">制作：ねこの手ウェブ制作 ／ <a href="mailto:syunta.abe0921@gmail.com">syunta.abe0921@gmail.com</a></p>
 </footer>
 
-<button class="hk-totop" type="button" aria-label="ページの先頭へ戻る"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 64 64"><circle class="ring" cx="32" cy="32" r="19" fill="none" stroke-width="3.4"/><path class="seam" d="M17 23c9 3 14 9 15 19M48 21c-8 5-17 6-27 3M33 13c2 9 1 17-4 25" fill="none" stroke-width="3.4"/></svg></button>
-
-<div class="hk-lightbox" role="dialog" aria-modal="true" aria-label="写真の拡大表示" hidden>
-  <button class="hk-lb-btn hk-lb-close" type="button" aria-label="閉じる">×</button>
-  <button class="hk-lb-btn hk-lb-prev" type="button" aria-label="前の写真">‹</button>
-  <figure><img src="" alt=""><figcaption><span class="hk-lb-cap"></span><span class="hk-lb-count"></span></figcaption></figure>
-  <button class="hk-lb-btn hk-lb-next" type="button" aria-label="次の写真">›</button>
-</div>
-
-<script src="assets/main.js"></script>
-<script src="assets/fx.js"></script>
 </body>
 </html>
